@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Slider() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -27,6 +27,12 @@ function Slider() {
       bg: "bg-gradient-to-r from-pink-900 to-gray-700",
     },
   ];
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev == slides.length - 1 ? 0 : prev + 1));
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="h-[calc(100vh-80px)] overflow-hidden ">
