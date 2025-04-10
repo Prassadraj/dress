@@ -1,4 +1,5 @@
 import { wixClientServer } from "@/lib/wixClientServer";
+import NavIcons from "./NavIcons";
 
 const Nav = async () => {
   // const wixClient = useWixClient();
@@ -18,7 +19,7 @@ const Nav = async () => {
     .queryProducts()
     .eq("collectionIds", process.env.OVERSIZED_ID)
     .find();
-  console.log(res._items[0].media);
+  console.log(res._items[0]);
   return (
     <div className="flex justify-between items-center tablet:px-20 tablet:py-10 w-full h-20">
       <div className="">LOGO</div>
@@ -27,8 +28,7 @@ const Nav = async () => {
         <p>Oversized</p>
       </div>
       <div className=" flex text-center gap-2">
-        <div>User</div>
-        <div>Cart</div>
+        <NavIcons />
       </div>
     </div>
   );
