@@ -40,7 +40,9 @@ function NavIcons() {
       <div className="" onClick={() => setCart((prev) => !prev)}>
         <TiShoppingCart />
       </div>
-      <CartModel open={cart} setOpen={setCart} />
+      <div className="cursor-pointer">
+        <CartModel open={cart} setOpen={setCart} />
+      </div>
     </div>
   );
 }

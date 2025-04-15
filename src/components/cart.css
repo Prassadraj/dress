@@ -1,0 +1,31 @@
+.cartmenu {
+  clip-path: circle(0% at 100% 0%);
+}
+.cartmenu.open {
+  clip-path: circle(150% at 100% 0%);
+}
+.currentSlide {
+  animation: circlePop 0.5s ease-in forwards;
+}
+@keyframes circlePop {
+  from {
+    clip-path: circle(0% at 50% 100%);
+  }
+  to {
+    clip-path: circle(150% at 50% 100%);
+  }
+}
+.unique {
+  animation: moving 10s infinite linear;
+}
+
+@keyframes moving {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.screen {
+}
