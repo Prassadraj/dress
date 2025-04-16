@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Newsreader, Montserrat } from "next/font/google";
 import Image from "next/image";
 import "./cart.css";
@@ -12,8 +12,8 @@ function CartModel({ open, setOpen }) {
   const [quantity, setQuantity] = useState(1);
   // temp
   const stock = 10;
-  // dataa
-  const [dataa, setDataa] = useState([
+  // data
+  const [data, setData] = useState([
     {
       id: 1,
       image: "/slider/slide1.webp",
@@ -50,9 +50,12 @@ function CartModel({ open, setOpen }) {
     // Add more items if needed
   ]);
   const handleRemove = (index) => {
-    setDataa((prev) => prev.filter((_, i) => i !== index));
+    setData((prev) => prev.filter((_, i) => i !== index));
   };
-
+  const subTotal = data.reduce(
+    (acc, item) => acc + item.salePrice * item.quantity,
+    0
+  );
   return (
     <div
       className={`h-screen w-[450px] ${
@@ -74,10 +77,10 @@ function CartModel({ open, setOpen }) {
           </div>
           {/* sec div for show all cart info  */}
           <div
-            className="w-full h-96 overflow-y-scroll flex flex-col
+            className="w-full h-[70vh] overflow-y-scroll flex flex-col border-b-2 shadow-sm shadow-black/50 py-2 
            gap-4"
           >
-            {dataa.map((item, index) => (
+            {data.map((item, index) => (
               <div key={item.id} className="flex h-52 w-full">
                 <div className="w-1/2">
                   <Image
@@ -108,20 +111,38 @@ function CartModel({ open, setOpen }) {
                     <div className="px-1 flex border border-gray-400 rounded-md justify-between items-center w-24 ">
                       <p
                         className={`p-1 text-xl cursor-pointer ${
-                          item.stock === quantity
+                          item.stock === item.quantity
                             ? "pointer-events-none opacity-20 font-bold"
                             : ""
                         }`}
-                        onClick={() => setQuantity((prev) => prev + 1)}
+                        onClick={() =>
+                          setData((prev) =>
+                            prev.map((val) =>
+                              val.id == item.id && val.quantity < val.stock
+                                ? { ...val, quantity: val.quantity + 1 }
+                                : val
+                            )
+                          )
+                        }
                       >
                         +
                       </p>
                       <p className="p-1">{item.quantity}</p>
                       <p
                         className={`p-1 text-xl font-bold cursor-pointer ${
-                          quantity === 1 ? "pointer-events-none opacity-20" : ""
+                          item.quantity === 1
+                            ? "pointer-events-none opacity-20"
+                            : ""
                         }`}
-                        onClick={() => setQuantity((prev) => prev - 1)}
+                        onClick={() =>
+                          setData((prev) =>
+                            prev.map((val) =>
+                              val.id == item.id && val.quantity > 1
+                                ? { ...val, quantity: val.quantity - 1 }
+                                : val
+                            )
+                          )
+                        }
                       >
                         -
                       </p>
@@ -137,6 +158,14 @@ function CartModel({ open, setOpen }) {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="flex justify-between">
+            <p>Subtotal</p>
+            <p>Rs.{subTotal}.00</p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <div className="w-full bg-black/80 text-white py-2">Check Out</div>
+            <div className="w-full h-max bg-gray-300 py-2">Cart View</div>
           </div>
         </div>
       </div>
