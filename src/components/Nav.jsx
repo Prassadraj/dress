@@ -19,9 +19,9 @@ const Nav = async () => {
     .queryProducts()
     .eq("collectionIds", process.env.OVERSIZED_ID)
     .find();
-  console.log(res._items[0]);
+  console.log(res._items);
   return (
-    <div className="flex justify-between items-center tablet:px-20 tablet:py-10 w-full h-20">
+    <div className="flex justify-between items-center tablet:px-10 tablet:py-10 w-full h-20">
       <div className="">LOGO</div>
       <div className=" flex items-center gap-2">
         <p>Home</p>
