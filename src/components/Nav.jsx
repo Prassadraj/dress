@@ -14,12 +14,12 @@ const Nav = async () => {
   //   };
   //   getProduct();
   // }, [wixClient]);
-  const wixClient = await wixClientServer();
-  const res = await wixClient.products
-    .queryProducts()
-    .eq("collectionIds", process.env.OVERSIZED_ID)
-    .find();
-  console.log(res._items);
+  // const wixClient = await wixClientServer();
+  // const res = await wixClient.products
+  //   .queryProducts()
+  //   .eq("collectionIds", process.env.OVERSIZED_ID)
+  //   .find();
+  // // console.log(res._items);
   return (
     <div className="flex justify-between items-center tablet:px-10 tablet:py-10 w-full h-20">
       <div className="">LOGO</div>
