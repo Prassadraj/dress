@@ -21,13 +21,13 @@ function NavIcons() {
     }
   };
   return (
-    <div className="flex items-center tablet:gap-4 relative">
+    <div className="flex items-center tablet:gap-4 relative ">
       <div className="cursor-pointer" onClick={handleProfile}>
         <FiUser />
       </div>
       {profile && (
         <div
-          className="absolute top-12 left-0 p-2 rounded-md  bg-white text-black z-20
+          className="absolute top-12 left-0 p-2 rounded-md  bg-white text-black z-50
          shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
         >
           <Link href="/"> Profile</Link>
@@ -37,10 +37,10 @@ function NavIcons() {
       <div>
         <IoMdNotifications />
       </div>
-      <div className="" onClick={() => setCart((prev) => !prev)}>
+      <div className="cursor-pointer" onClick={() => setCart((prev) => !prev)}>
         <TiShoppingCart />
       </div>
-      <div className="cursor-pointer">
+      <div>
         <CartModel open={cart} setOpen={setCart} />
       </div>
     </div>
