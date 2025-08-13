@@ -1,3 +1,4 @@
+import CirclePop from "@/components/CirclePop";
 import NewArrivals from "@/components/NewArrivals";
 import Slider from "@/components/Slider";
 import Image from "next/image";

@@ -14,7 +14,7 @@ const SinglePage = async ({ params }) => {
   }
   const product = products.items[0];
   return (
-    <div>
+    <div className="tablet:p-10">
       SinglePage{" "}
       <p>
         {id}

@@ -17,11 +17,11 @@ async function NewArrivals() {
   console.log(res);
   return (
     <div
-      className={`w-full tablet:py-10 flex flex-col gap-10 tablet:px-10 ${news.className}`}
+      className={`w-full tablet:p-10 flex flex-col gap-10  ${news.className}`}
     >
       <div className="text-center">
         <h1 className="text-6xl bg-grey-gradient text-transparent bg-clip-text font-bold ">
-          ....
+          New
         </h1>
       </div>
       <div className="grid w-full gap-4 tablet:gap-10 tablet:py-10 grid-cols-3 tablet:grid-cols-4 laptop:grid-cols-5">

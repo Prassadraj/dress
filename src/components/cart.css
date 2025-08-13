@@ -18,7 +18,9 @@
 .unique {
   animation: moving 10s infinite linear;
 }
-
+.mask {
+  mask-image: linear-gradient(to right, transparent, red, transparent);
+}
 @keyframes moving {
   0% {
     transform: translateX(0%);
@@ -27,5 +29,37 @@
     transform: translateX(-50%);
   }
 }
-.screen {
+
+.easycodingwithme {
+  animation: magic 1s forwards ease-in;
 }
+
+@keyframes magic {
+  from {
+    clip-path: circle(0% at 50% 100%);
+  }
+  to {
+    clip-path: circle(150% at 50% 100%);
+  }
+}
+.class:has([name="comman"]) .img {
+  display: none;
+}
+.class:has(#one:checked) .img.img-1 {
+  display: block;
+}
+.class:has(#two:checked) .img.img-2 {
+  display: block;
+}
+.class:has(#three:checked) .img.img-3 {
+  display: block;
+}
+.class:has(#four:checked) .img.img-4 {
+  display: block;
+}
+/* .class:has([id="id"] > option[value="20"]:checked) {
+  opacity: 20%;
+}
+.class:has([id="id"] > option[value="60"]:checked) {
+  opacity: 60%;
+} */
